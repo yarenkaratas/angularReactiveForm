@@ -1,0 +1,49 @@
+<div style="display: flex">
+  <div style="margin-right: 15px">
+    <img src="assets/kredi.jpg" />
+  </div>
+
+  <div class="container">
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+      <app-input
+        label="Ad Soyad"
+        [control]="$any(cardForm.get('name'))"
+      ></app-input>
+      <app-input
+        label="Kart Numarası"
+        [control]="$any(cardForm.get('cardNumber'))"
+      ></app-input>
+      <div class="columns">
+        <div class="column">
+          <app-input
+            label="Son Kullanma Tarihi"
+            [control]="$any(cardForm.get('expiration'))"
+          ></app-input>
+        </div>
+        <div class="column">
+          <app-input
+            label="Güvenlik Kodu"
+            [control]="$any(cardForm.get('securityCode'))"
+          ></app-input>
+        </div>
+      </div>
+      <div class="buttons" style="display: flex; justify-content: flex-end">
+        <button (click)="ResetForm()" class="button is-warning" type="button">
+          Temizle
+        </button>
+        <button
+          class="button is-primary"
+          [disabled]="cardForm.invalid"
+          type="submit"
+        >
+          Kaydet
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <div>Form içeriği : {{ cardForm.value | json }}</div>
+<div>Form valid mi : {{ cardForm.valid ? "evet" : "hayır" }}</div>
+<div>Form hataları: {{ cardForm.get("name")?.errors | json }}</div> -->
+<!-- json pipe ile debuglıcaz -->
